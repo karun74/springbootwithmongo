@@ -1,0 +1,6 @@
+com\emc\data\UserRepository.class
+com\emc\mongo\controller\DataServiceController.class
+demo\SpringBootWithMongoApplication.class
+demo\ServletConfig.class
+com\emc\data\UserDataService.class
+com\emc\domain\User.class
