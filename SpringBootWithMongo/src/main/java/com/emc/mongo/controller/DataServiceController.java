@@ -26,7 +26,7 @@ public class DataServiceController {
         this.uds = service;
     }
 	
-	@RequestMapping(value="/saveUser",method=RequestMethod.POST,
+	@RequestMapping(value="/registerUser",method=RequestMethod.POST,
                 produces={"application/json"},consumes={"text/plain"})
 	public void saveUser(@RequestBody User u){
 		System.out.println("Saving User: "+u.getUserName());
@@ -40,7 +40,7 @@ public class DataServiceController {
 				
 	}
 	
-	@RequestMapping(value="/users/getAll", method=RequestMethod.GET)
+	@RequestMapping(value="/showUsers", method=RequestMethod.GET)
 	public List<User> getAllUsers(){
 		return uds.getAllUsers();
 	}
