@@ -2,4 +2,4 @@
 mongocontainerName="$1"
 fileName="$2"
 docker cp users.json ${mongocontainerName}:/${fileName}
-docker exec -it $mongocontainerName mongoimport --db sample --collection User --type json --file /$fileName --jsonArray
+docker exec -it $mongocontainerName sh -c 'mongoimport --jsonArray --db sample --collection User --type json --file /$fileName'
