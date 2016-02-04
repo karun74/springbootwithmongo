@@ -42,6 +42,7 @@ public class DataServiceController {
 	
 	@RequestMapping(value="/showUsers", method=RequestMethod.GET)
 	public List<User> getAllUsers(){
+		System.out.println("Inside Show Users...");
 		return uds.getAllUsers();
 	}
 
