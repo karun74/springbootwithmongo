@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: circleci/openjdk:11.0.1-jdk
 
-    working_directory: /springbootwithmongo
+    working_directory: ~/springbootwithmongo
     
     steps:
       # git pull
@@ -12,26 +12,25 @@ jobs:
 
       # setup testing env
       - setup_remote_docker:
-          docker_layer_caching: false
+          docker_layer_caching: true
       - run:
           name: Login to DockerHub
           command: docker login -u $DOCKER_USER -p $DOCKER_PASS
       
-            
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - springbootwithmongo-{{ checksum "pom.xml" }}
+          - springbootwithmongo/SpringBootWithMongo-{{ checksum "pom.xml" }}
 
       - run: mvn dependency:go-offline
 
       - save_cache:
           paths:
             - ~/.m2
-          key: springbootwithmongo-{{ checksum "pom.xml" }}
+          key: springbootwithmongo/SpringBootWithMongo-{{ checksum "pom.xml" }}
         
       # package into a jar
-      - run: mvn clean package ~/springbootwithmongo/SpringBootWithMongo
+      - run: mvn clean package
 
       # build and push docker image to docker hub
       - run: mvn clean compile jib:build -Dimage=karun74/springbootwithmongo:$CIRCLE_BUILD_NUM
