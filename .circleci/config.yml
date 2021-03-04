@@ -16,9 +16,7 @@ jobs:
       - run:
           name: Login to DockerHub
           command: docker login -u $DOCKER_USER -p $DOCKER_PASS
-      - run:
-          name: Decrpyt Secrets
-          command: openssl enc -d -aes-256-ecb -md md5 -in src/main/resources/application.properties -out src/main/resources/application.properties -k $SECRETS_KEY
+      
             
       # Download and cache dependencies
       - restore_cache:
