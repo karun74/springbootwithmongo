@@ -20,14 +20,14 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - springbootwithmongo-{{ checksum "pom.xml" }}
+          - springbootwithmongo/SpringBootWithMongo/-{{ checksum "pom.xml" }}
 
       - run: mvn dependency:go-offline
 
       - save_cache:
           paths:
             - ~/.m2
-          key: springbootwithmongo-{{ checksum "pom.xml" }}
+          key: springbootwithmongo/SpringBootWithMongo/-{{ checksum "pom.xml" }}
         
       # package into a jar
       - run: mvn clean package
